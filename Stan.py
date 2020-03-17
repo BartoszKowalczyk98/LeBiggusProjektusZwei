@@ -1,3 +1,6 @@
+from filecmp import cmp
+
+
 class Stan:
     currentCity = -1
     path = []
@@ -11,3 +14,6 @@ class Stan:
 
     def addCost(self, c):
         self.cost = self.cost + c
+
+    def __lt__(self, other):
+        return self.cost < other.cost
