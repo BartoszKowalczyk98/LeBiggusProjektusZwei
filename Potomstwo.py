@@ -14,7 +14,6 @@ def potomstwo(stan, miasta):
 
 
     if len(stan.path) >= howMany:
-        print("Penis")
         return -1
 
     listaStanow = []
