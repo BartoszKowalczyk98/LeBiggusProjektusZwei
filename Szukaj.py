@@ -8,10 +8,11 @@ cities = []
 for i in range(howManyCities):
     cities.insert(i, [i, random.randint(1, 40), random.randint(1, 40)])
 
-currentState = Stan()
+
 index = random.randrange(0, howManyCities)
-currentState.setCurrentCity(index)
-currentState.addPath(index)
+currentState = Stan()
+currentState.currentCity = index
+currentState.path = [index]
 
 states = potomstwo(currentState, cities)
 
@@ -35,11 +36,11 @@ x.append(cities[states[0].path[0]][1])
 y.append(cities[states[0].path[0]][2])
 plt.plot(x, y)
 for i in range(len(x)-1):
-    label=states[0].path[i]+1
+    label=states[0].path[i]
     plt.annotate(label,  # this is the text
                  (x[i], y[i]),  # this is the point to label
                  textcoords="offset points",  # how to position the text
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
-
+print(states[0].path)
 plt.show()
