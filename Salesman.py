@@ -1,7 +1,7 @@
 import copy
 
 
-class Stan:
+class Salesman:
     currentCity = -1
     path = []
     cost = 0

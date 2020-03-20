@@ -1,33 +1,25 @@
-import copy
 import math
+from Salesman import Salesman
 
-from Stan import Stan
+def potomstwo(currentNode, allCities):
+    howMany = len(allCities)
 
-
-def calculateDistance(x1, y1, x2, y2):
-    dist = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
-    return dist
-
-
-def potomstwo(stan, miasta):
-    howMany = len(miasta)
-
-    if len(stan.path) >= howMany:
+    if len(currentNode.path) >= howMany:
         return -1
 
-    listaStanow = []
+    result = []
 
     for i in range(howMany):
 
-        temp = Stan(stan.currentCity, stan.path,stan.cost)
+        temp = Salesman(currentNode.currentCity, currentNode.path, currentNode.cost)
         if i in temp.path:
             continue
         else:
             temp.cost += math.sqrt(
-                (miasta[i][1] - miasta[stan.currentCity][1]) ** 2 + (miasta[i][2] - miasta[stan.currentCity][2]) ** 2)
+                (allCities[i][1] - allCities[currentNode.currentCity][1]) ** 2 + (allCities[i][2] - allCities[currentNode.currentCity][2]) ** 2)
             temp.path.append(i)
             temp.currentCity = i
-            listaStanow.append(temp)
+            result.append(temp)
 
 
-    return listaStanow
+    return result

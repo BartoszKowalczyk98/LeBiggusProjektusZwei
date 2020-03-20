@@ -1,18 +1,19 @@
 import random
+import time
+
 import matplotlib.pyplot as plt
-from Stan import Stan
+from Salesman import Salesman
 from Potomstwo import potomstwo
 
 howManyCities = int(input("Podaj liczbe miast: "))
+starttime = time.time()
 cities = []
 for i in range(howManyCities):
-    cities.insert(i, [i, random.randint(1, 40), random.randint(1, 40)])
+    cities.append([i,random.randint(1,40),random.randint(1,40)])
 
 
-index = random.randrange(0, howManyCities)
-currentState = Stan(index, [index],0.0)
-#currentState.currentCity = index
-#currentState.path = [index]
+startingIndex = random.randrange(0, howManyCities)
+currentState = Salesman(startingIndex, [startingIndex], 0.0)
 
 states = potomstwo(currentState, cities)
 
@@ -26,6 +27,8 @@ while len(states[0].path)!=howManyCities:
 
 
 states.sort()
+
+endtime = time.time()
 x = []
 y = []
 for i in states[0].path:
@@ -42,5 +45,7 @@ for i in range(len(x)-1):
                  textcoords="offset points",  # how to position the text
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
-
+print("kolejność odwiedzonych miast: ")
+print(states[0].path)
+print("czas na bruteforce: "+str(endtime-starttime))
 plt.show()
