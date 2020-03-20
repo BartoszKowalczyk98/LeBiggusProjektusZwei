@@ -19,10 +19,7 @@ def potomstwo(stan, miasta):
 
     for i in range(howMany):
 
-        temp = Stan()
-        temp.path = copy.deepcopy(stan.path)
-        temp.currentCity = stan.currentCity
-        temp.cost = stan.cost
+        temp = Stan(stan.currentCity, stan.path,stan.cost)
         if i in temp.path:
             continue
         else:

@@ -10,9 +10,9 @@ for i in range(howManyCities):
 
 
 index = random.randrange(0, howManyCities)
-currentState = Stan()
-currentState.currentCity = index
-currentState.path = [index]
+currentState = Stan(index, [index],0.0)
+#currentState.currentCity = index
+#currentState.path = [index]
 
 states = potomstwo(currentState, cities)
 
@@ -42,5 +42,5 @@ for i in range(len(x)-1):
                  textcoords="offset points",  # how to position the text
                  xytext=(0, 10),  # distance from text to points (x,y)
                  ha='center')  # horizontal alignment can be left, right or center
-print(states[0].path)
+
 plt.show()
